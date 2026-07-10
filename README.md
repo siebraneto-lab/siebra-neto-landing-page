@@ -1,16 +1,16 @@
-# Siebra Neto - Landing Page
+# Siebra Neto - Landing Page Oficial
 
-Landing page oficial do compositor Siebra Neto.
+Esta é a landing page oficial do compositor brasileiro Siebra Neto. 
 
-Design: Dark/Glassmorphism com luzes neon.
+## Características
+- Design futurista com estética Glassmorphism e Neon.
+- Seção de lançamentos dinâmica com slider interativo (Swiper.js).
+- Integração com Spotify (Perfil e Tracks).
+- Grade completa de plataformas de streaming (DistroKid).
+- Seção de Redes Sociais.
+- Totalmente responsivo.
 
-## Stack
-- HTML5
-- Tailwind CSS (CDN)
-- Swiper.js
-- Font Awesome
-
-## Deploy
-Abra index.html em qualquer servidor web estático (Netlify, Vercel, GitHub Pages).
-
-Feito com ♥ para Jesus.
+## Tecnologias
+- HTML5 / CSS3 (Tailwind CSS via CDN)
+- JavaScript (Swiper.js)
+- Fontes: Ubuntu e Inter
