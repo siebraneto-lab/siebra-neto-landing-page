@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siebra Neto | Compositor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'ubuntu': ['Ubuntu', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'neon-pink': '#ff2d75',
+                        'neon-purple': '#b026ff',
+                        'neon-blue': '#4d6bff',
+                        'dark-bg': '#0a0a0f',
+                        'dark-card': 'rgba(15, 15, 25, 0.7)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="neon-bg">
+        <div class="neon-wave"></div>
+        <div class="wave-line wave-line-1"></div>
+        <div class="wave-line wave-line-2"></div>
+        <div class="wave-line wave-line-3"></div>
+        <div class="wave-line wave-line-4"></div>
+        <div class="wave-line wave-line-5"></div>
+        <div class="wave-line wave-line-6"></div>
+        <div class="wave-line wave-line-7"></div>
+        <div id="particles"></div>
+        <div id="musical-notes"></div>
+    </div>
+
+    <!-- Sound Wave Background Element (bottom of screen) -->
+    <div class="sound-wave-bg" id="soundWaveBg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-dark-bg/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="equalizer">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <span class="font-ubuntu text-xl font-bold neon-text">SN</span>
+            </a>
+            <div class="hidden md:flex gap-8">
+                <a href="#hero" class="nav-link font-inter text-sm">Início</a>
+                <a href="#lancamentos" class="nav-link font-inter text-sm">Lançamentos</a>
+                <a href="#spotify" class="nav-link font-inter text-sm">Música</a>
+                <a href="#social" class="nav-link font-inter text-sm">Redes Sociais</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white text-xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-bg/95 backdrop-blur-lg border-t border-white/5">
+            <div class="px-6 py-4 flex flex-col gap-4">
+                <a href="#hero" class="nav-link font-inter text-sm">Início</a>
+                <a href="#lancamentos" class="nav-link font-inter text-sm">Lançamentos</a>
+                <a href="#spotify" class="nav-link font-inter text-sm">Música</a>
+                <a href="#social" class="nav-link font-inter text-sm">Redes Sociais</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center px-6 pt-20">
+            <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <!-- Hero Image - Full View with Fade & Neon Glow -->
+                <div class="fade-in-up">
+                    <div class="hero-image-container relative">
+                        <div class="hero-image-glow"></div>
+                        <div class="hero-image-neon-border"></div>
+                        <img src="https://customer-assets.emergentagent.com/wingman/9f2a76cf-2609-4a83-a548-a0aa30b21312/attachments/1cb53a56b5f046979bb7b8aedf38c870_a702b96a-5c31-4953-a00b-7c8c0f7d9892.jpg" 
+                             alt="Siebra Neto - Compositor"
+                             onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 600%22><rect fill=%22%231a1a2e%22 width=%22400%22 height=%22600%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23b026ff%22 font-size=%2280%22 font-family=%22sans-serif%22>SN</text></svg>'">
+                        <!-- Decorative pulse rings -->
+                        <div class="pulse-ring" style="width:120%;height:120%;top:-10%;left:-10%;"></div>
+                        <div class="pulse-ring" style="width:120%;height:120%;top:-10%;left:-10%;animation-delay:1s;"></div>
+                        <div class="pulse-ring" style="width:120%;height:120%;top:-10%;left:-10%;animation-delay:2s;"></div>
+                    </div>
+                </div>
+                <!-- Hero Text -->
+                <div class="text-center lg:text-left fade-in-up" style="transition-delay: 0.2s;">
+                    <p class="font-inter text-sm uppercase tracking-[0.3em] text-neon-pink mb-4">Compositor</p>
+                    <h1 class="font-ubuntu text-5xl md:text-7xl font-bold neon-text-intense mb-6 leading-tight whitespace-nowrap">
+                        Siebra Neto
+                    </h1>
+                    <p class="font-inter text-lg text-gray-300 max-w-lg leading-relaxed mb-8">
+                        Compositor brasileiro com músicas espirituais que transitam entre a força do rock, paz do reggae e poesia da MPB. Onde Jesus Cristo é o centro de toda a sua motivação musical.
+                    </p>
+                    <!-- Decorative Equalizer -->
+                    <div class="equalizer-large mb-8">
+                        <div class="bar" style="animation-delay:0s;"></div>
+                        <div class="bar" style="animation-delay:0.1s;"></div>
+                        <div class="bar" style="animation-delay:0.2s;"></div>
+                        <div class="bar" style="animation-delay:0.3s;"></div>
+                        <div class="bar" style="animation-delay:0.15s;"></div>
+                        <div class="bar" style="animation-delay:0.25s;"></div>
+                        <div class="bar" style="animation-delay:0.05s;"></div>
+                        <div class="bar" style="animation-delay:0.35s;"></div>
+                        <div class="bar" style="animation-delay:0.12s;"></div>
+                        <div class="bar" style="animation-delay:0.22s;"></div>
+                        <div class="bar" style="animation-delay:0.18s;"></div>
+                        <div class="bar" style="animation-delay:0.28s;"></div>
+                        <div class="bar" style="animation-delay:0.08s;"></div>
+                        <div class="bar" style="animation-delay:0.32s;"></div>
+                        <div class="bar" style="animation-delay:0.14s;"></div>
+                        <div class="bar" style="animation-delay:0.24s;"></div>
+                        <div class="bar" style="animation-delay:0.04s;"></div>
+                        <div class="bar" style="animation-delay:0.2s;"></div>
+                        <div class="bar" style="animation-delay:0.3s;"></div>
+                        <div class="bar" style="animation-delay:0.1s;"></div>
+                    </div>
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="#spotify" class="px-8 py-3 rounded-full bg-gradient-to-r from-neon-pink to-neon-purple font-inter font-semibold text-sm hover:scale-105 transition-transform shadow-lg shadow-neon-purple/30 hover:shadow-neon-pink/40">
+                            <i class="fab fa-spotify mr-2"></i>Ouvir Agora
+                        </a>
+                        <a href="#social" class="px-8 py-3 rounded-full border border-neon-purple/50 font-inter font-semibold text-sm hover:border-neon-pink hover:shadow-lg hover:shadow-neon-pink/20 transition-all">
+                            Seguir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider max-w-4xl mx-auto my-8"></div>
+
+        <!-- ===== LANÇAMENTOS E COMPOSIÇÕES - SWIPER SLIDER ===== -->
+        <section id="lancamentos" class="py-20 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in-up">
+                    <p class="font-inter text-sm uppercase tracking-[0.3em] text-neon-purple mb-3">Descubra</p>
+                    <h2 class="font-ubuntu text-3xl md:text-5xl font-bold neon-text">Lançamentos e Composições</h2>
+                    <div class="flex flex-col items-center justify-center mt-4">
+                        <div class="equalizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    <div class="mt-12 space-y-8 opacity-30 grayscale hover:grayscale-0 transition-all duration-1000">
+                        <!-- Row 1 -->
+                        <div class="flex flex-wrap justify-center items-center gap-5 md:gap-10">
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fab fa-spotify text-xl group-hover:text-[#1DB954] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Spotify</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fab fa-apple text-xl group-hover:text-[#FFFFFF] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Apple</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fab fa-youtube text-xl group-hover:text-[#FF0000] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">YouTube</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fab fa-amazon text-xl group-hover:text-[#FF9900] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Amazon</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fab fa-deezer text-xl group-hover:text-[#A238FF] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Deezer</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-compact-disc text-xl group-hover:text-[#00FFFF] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Tidal</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fab fa-instagram text-xl group-hover:text-[#E4405F] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Instagram</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fab fa-facebook text-xl group-hover:text-[#1877F2] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Facebook</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-headphones text-xl group-hover:text-[#117CBE] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Pandora</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fab fa-twitch text-xl group-hover:text-[#9146FF] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Twitch</span>
+                            </div>
+                        </div>
+                        <!-- Row 2 -->
+                        <div class="flex flex-wrap justify-center items-center gap-5 md:gap-10">
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-broadcast-tower text-xl group-hover:text-[#C6002B] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">iHeart</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-globe text-xl group-hover:text-[#FFD700] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Claro</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-play text-xl group-hover:text-[#6495ED] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Anghami</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-cloud text-xl group-hover:text-[#FF8C00] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Boomplay</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-star text-xl group-hover:text-[#00FF7F] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">JioSaavn</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-circle text-xl group-hover:text-[#FF4500] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">NetEase</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-music text-xl group-hover:text-[#FFD700] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Tencent</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-infinity text-xl group-hover:text-[#00CED1] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Qobuz</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-bolt text-xl group-hover:text-[#FFFF00] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">Yandex</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-layer-group text-xl group-hover:text-[#ADFF2F] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">MediaNet</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 group cursor-default">
+                                <i class="fas fa-certificate text-xl group-hover:text-[#DAA520] transition-colors"></i>
+                                <span class="text-[8px] font-inter uppercase tracking-tighter">KKBox</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- DistroKid Comprehensive Platforms Grid -->
+
+                    </div>
+                </div>
+
+                <!-- Swiper Container -->
+                <div class="fade-in-up">
+                    <div class="swiper lancamentos-swiper">
+                        <div class="swiper-wrapper">
+                            <!-- SLIDES SÃO GERADOS DINAMICAMENTE VIA JAVASCRIPT -->
+                        </div>
+                        <!-- Swiper Pagination -->
+                        <div class="swiper-pagination"></div>
+                        <!-- Swiper Navigation -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider max-w-4xl mx-auto my-8"></div>
+
+        <!-- Spotify Section -->
+        <section id="spotify" class="py-20 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in-up">
+                    <p class="font-inter text-sm uppercase tracking-[0.3em] text-neon-purple mb-3">Ouça no Spotify</p>
+                    <h2 class="font-ubuntu text-3xl md:text-5xl font-bold neon-text">Perfil do Artista</h2>
+                    <div class="flex justify-center mt-4">
+                        <div class="equalizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8 items-start">
+                    <!-- Spotify Artist Profile Embed -->
+                    <div class="fade-in-up glass-card p-6">
+                        <div class="spotify-embed">
+                            <iframe 
+                                style="border-radius:12px" 
+                                src="https://open.spotify.com/embed/artist/0bKK5d0pmO8aLjYmGjXeAn?utm_source=generator&theme=0" 
+                                width="100%" 
+                                height="380" 
+                                frameBorder="0" 
+                                allowfullscreen="" 
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="mt-4 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-[#1DB954] flex items-center justify-center shadow-lg shadow-green-500/30">
+                                <i class="fab fa-spotify text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-inter text-sm text-gray-400">Perfil Oficial no</p>
+                                <p class="font-inter font-semibold text-white">Spotify</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artist Info -->
+                    <div class="fade-in-up space-y-4" style="transition-delay: 0.2s;">
+                        <div class="glass-card p-6">
+                            <!-- Header -->
+                            <div class="flex items-start gap-3 mb-5">
+                                <div class="equalizer flex-shrink-0" style="height:30px;">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                                <h3 class="font-ubuntu text-base font-bold leading-snug" style="background: linear-gradient(90deg, #ff2d75, #b026ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: none;">A Alquimia Musical de Siebra Neto</h3>
+                            </div>
+
+                            <!-- Intro -->
+                            <p class="font-inter text-gray-300 leading-relaxed text-sm mb-4">
+                                Siebra Neto traduz a busca pela transcendência em forma de melodia. O compositor brasileiro faz da sua arte um canal de conexão espiritual, dando vida a canções que tocam o invisível e convidam à reflexão interna.
+                            </p>
+
+                            <!-- Creative freedom -->
+                            <p class="font-inter text-gray-400 leading-relaxed text-sm mb-4">
+                                Sua assinatura principal é a total liberdade criativa. Em vez de se limitar a um único gênero, ele caminha por diferentes territórios sonoros com total fluidez:
+                            </p>
+
+                            <!-- Genre highlights -->
+                            <ul class="space-y-3 mb-5">
+                                <li class="flex items-start gap-3 p-3 rounded-xl" style="background: rgba(255, 45, 117, 0.06); border: 1px solid rgba(255, 45, 117, 0.18);">
+                                    <span class="text-neon-pink mt-0.5 flex-shrink-0" style="font-size: 0.7rem;">&#9670;</span>
+                                    <p class="font-inter text-sm leading-relaxed text-gray-300">
+                                        <span class="font-bold text-neon-pink" style="text-shadow: 0 0 10px rgba(255, 45, 117, 0.5);">Pulsão e Ritmo:</span>
+                                        Encontra no reggae a cadência perfeita para emanar vibrações de paz, luz e equilíbrio.
+                                    </p>
+                                </li>
+                                <li class="flex items-start gap-3 p-3 rounded-xl" style="background: rgba(176, 38, 255, 0.06); border: 1px solid rgba(176, 38, 255, 0.18);">
+                                    <span class="text-neon-purple mt-0.5 flex-shrink-0" style="font-size: 0.7rem;">&#9670;</span>
+                                    <p class="font-inter text-sm leading-relaxed text-gray-300">
+                                        <span class="font-bold text-neon-purple" style="text-shadow: 0 0 10px rgba(176, 38, 255, 0.5);">Força e Expressão:</span>
+                                        Utiliza o rock como uma plataforma de pura energia, atitude e questionamentos existenciais.
+                                    </p>
+                                </li>
+                                <li class="flex items-start gap-3 p-3 rounded-xl" style="background: rgba(77, 107, 255, 0.06); border: 1px solid rgba(77, 107, 255, 0.18);">
+                                    <span class="text-neon-blue mt-0.5 flex-shrink-0" style="font-size: 0.7rem;">&#9670;</span>
+                                    <p class="font-inter text-sm leading-relaxed text-gray-300">
+                                        <span class="font-bold text-neon-blue" style="text-shadow: 0 0 10px rgba(77, 107, 255, 0.5);">Poesia e Raiz:</span>
+                                        Mergulha na MPB para resgatar a sensibilidade lírica, a riqueza harmônica e o afeto da nossa cultura.
+                                    </p>
+                                </li>
+                            </ul>
+
+                            <!-- Closing -->
+                            <p class="font-inter text-gray-400 leading-relaxed text-sm italic pt-4" style="border-top: 1px solid rgba(176, 38, 255, 0.2);">
+                                Ao fundir texturas eletrônicas contemporâneas com a pureza dos instrumentos acústicos, Siebra Neto entrega uma obra plural, com sensibilidade musical, profundamente conectada com a sua fé em Jesus Cristo. <span class="text-gray-300 not-italic font-medium">É música que não se apenas ouve, mas que se sente no peito.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider max-w-4xl mx-auto my-8"></div>
+
+        <!-- Social Media Section -->
+        <section id="social" class="py-20 px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="mb-16 fade-in-up">
+                    <p class="font-inter text-sm uppercase tracking-[0.3em] text-neon-pink mb-3">Conecte-se</p>
+                    <h2 class="font-ubuntu text-3xl md:text-5xl font-bold neon-text mb-4">Redes Sociais</h2>
+                    <p class="font-inter text-gray-400 max-w-lg mx-auto">
+                        Acompanhe Siebra Neto nas redes sociais e fique por dentro de novos lançamentos, bastidores e muito mais.
+                    </p>
+                </div>
+
+                <div class="glass-card p-10 fade-in-up">
+                    <div class="flex flex-wrap justify-center gap-10 mb-12">
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/siebranetocompositor/" target="_blank" rel="noopener noreferrer" class="social-btn instagram group">
+                            <i class="fab fa-instagram"></i>
+                            <span class="absolute -bottom-8 text-xs font-inter text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">Instagram</span>
+                        </a>
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@siebranetocompositor" target="_blank" rel="noopener noreferrer" class="social-btn youtube group">
+                            <i class="fab fa-youtube"></i>
+                            <span class="absolute -bottom-8 text-xs font-inter text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">YouTube</span>
+                        </a>
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/siebranetocompositor" target="_blank" rel="noopener noreferrer" class="social-btn facebook group">
+                            <i class="fab fa-facebook-f"></i>
+                            <span class="absolute -bottom-8 text-xs font-inter text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">Facebook</span>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <p class="font-ubuntu text-xl font-bold text-neon-pink uppercase tracking-wider">Paz & Luz</p>
+                            <p class="font-inter text-xs text-gray-400 mt-1">Vibração Reggae</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-ubuntu text-xl font-bold text-neon-purple uppercase tracking-wider">Energia</p>
+                            <p class="font-inter text-xs text-gray-400 mt-1">Força do Rock</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-ubuntu text-xl font-bold text-neon-blue uppercase tracking-wider">Poesia</p>
+                            <p class="font-inter text-xs text-gray-400 mt-1">Sensibilidade MPB</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-ubuntu text-xl font-bold text-neon-pink uppercase tracking-wider">Profundidade</p>
+                            <p class="font-inter text-xs text-gray-400 mt-1">Conexão Espiritual</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-10 px-6 border-t border-white/5">
+            <div class="max-w-6xl mx-auto flex flex-col items-center">
+                <div class="equalizer mb-4" style="height:25px;">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <p class="font-ubuntu text-lg font-bold neon-text mb-2">Siebra Neto</p>
+                <p class="font-inter text-sm text-gray-500">&copy; 2024 Siebra Neto. Todos os direitos reservados.</p>
+                <p class="font-inter text-xs text-gray-600 mt-2">Feito com <span class="text-neon-pink">&#9829;</span> para Jesus</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>
