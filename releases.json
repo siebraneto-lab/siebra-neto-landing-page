@@ -1,0 +1,16 @@
+{
+  "artista_id": "0bKK5d0pmO8aLjYmGjXeAn",
+  "total": 1,
+  "lancamentos": [
+    {
+      "id": "2Xr8ox7FHyXuF4gMVN1oPG",
+      "tipo": "track",
+      "titulo": "Sem luva de seda",
+      "data_lancamento": null,
+      "compositor": "Siebra Neto",
+      "genero": "MPB / Rock / Reggae",
+      "capa_url": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bc825533d7f26c049d8e2801",
+      "url_spotify": "https://open.spotify.com/track/2Xr8ox7FHyXuF4gMVN1oPG"
+    }
+  ]
+}
