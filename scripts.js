@@ -67,14 +67,19 @@ function renderizarSlides(musicas) {
 
 function initSwiper() {
     if (lancamentosSwiper) lancamentosSwiper.destroy(true, true);
+    const total = document.querySelectorAll('.lancamentos-swiper .swiper-slide').length;
     lancamentosSwiper = new Swiper('.lancamentos-swiper', {
         slidesPerView: 1,
         spaceBetween: 30,
         centeredSlides: true,
-        loop: document.querySelectorAll('.lancamentos-swiper .swiper-slide').length > 1,
+        // Com 3+ slides usa loop infinito; com 1-2 usa "rewind" (volta ao primeiro), mais estável.
+        loop: total >= 3,
+        rewind: total >= 2 && total < 3,
         grabCursor: true,
         effect: 'coverflow',
         coverflowEffect: { rotate: 5, stretch: 0, depth: 100, modifier: 1, slideShadows: false },
+        // Troca automática a cada 5s: do mais recente ao mais antigo, e recomeça.
+        autoplay: total >= 2 ? { delay: 5000, disableOnInteraction: false } : false,
         pagination: { el: '.swiper-pagination', clickable: true },
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         breakpoints: { 768: { slidesPerView: 1.3, spaceBetween: 40 } }
