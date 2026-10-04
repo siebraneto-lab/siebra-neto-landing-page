@@ -1,0 +1,51 @@
+
+
+/* ===== CARROSSEL: TRANSIÇÃO SUAVE E EFEITOS VISUAIS ===== */
+.lancamentos-swiper { --swiper-wrapper-transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1); }
+
+/* Slides vizinhos ficam esmaecidos e levemente desfocados; o ativo ganha foco */
+.lancamentos-swiper .swiper-slide {
+    opacity: 0.35;
+    filter: blur(3px) saturate(0.6);
+    transition: opacity 1.4s ease, filter 1.4s ease;
+}
+.lancamentos-swiper .swiper-slide-active { opacity: 1; filter: none; }
+
+/* Cartão: leve zoom + brilho neon pulsando no slide ativo */
+.lancamentos-swiper .slide-card {
+    transform: scale(0.9);
+    transition: transform 1.4s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 1.4s ease, border-color 1.4s ease;
+}
+.lancamentos-swiper .swiper-slide-active .slide-card {
+    transform: scale(1);
+    border-color: rgba(255, 45, 117, 0.55);
+    animation: cardGlow 3.2s ease-in-out infinite alternate;
+}
+@keyframes cardGlow {
+    from { box-shadow: 0 0 25px rgba(176, 38, 255, 0.25), 0 0 60px rgba(255, 45, 117, 0.10); }
+    to   { box-shadow: 0 0 45px rgba(255, 45, 117, 0.45), 0 0 100px rgba(176, 38, 255, 0.25); }
+}
+
+/* Conteúdo do slide entra com fade + subida suave quando fica ativo */
+.lancamentos-swiper .swiper-slide .p-6 > * { opacity: 0; transform: translateY(14px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.lancamentos-swiper .swiper-slide-active .p-6 > * { opacity: 1; transform: translateY(0); }
+.lancamentos-swiper .swiper-slide-active .p-6 > *:nth-child(1) { transition-delay: 0.35s; }
+.lancamentos-swiper .swiper-slide-active .p-6 > *:nth-child(2) { transition-delay: 0.5s; }
+.lancamentos-swiper .swiper-slide-active .p-6 > *:nth-child(3) { transition-delay: 0.65s; }
+.lancamentos-swiper .swiper-slide-active .p-6 > *:nth-child(4) { transition-delay: 0.8s; }
+.lancamentos-swiper .swiper-slide-active .p-6 > *:nth-child(5) { transition-delay: 0.95s; }
+
+/* Capa com zoom lento (efeito Ken Burns) e brilho que passeia */
+.lancamentos-swiper .slide-banner { background-size: 112%; transition: background-size 6s ease-out; }
+.lancamentos-swiper .swiper-slide-active .slide-banner { background-size: 100%; }
+.lancamentos-swiper .slide-banner::before { animation-duration: 6s; }
+
+/* Barra de progresso até a próxima troca */
+.autoplay-progress { position: absolute; left: 20%; right: 20%; bottom: 14px; height: 3px; border-radius: 3px; background: rgba(255,255,255,0.08); overflow: hidden; z-index: 10; }
+.autoplay-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #ff2d75, #b026ff, #4d6bff); box-shadow: 0 0 10px rgba(255,45,117,0.8); }
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    .lancamentos-swiper .swiper-slide, .lancamentos-swiper .slide-card, .lancamentos-swiper .slide-banner,
+    .lancamentos-swiper .swiper-slide .p-6 > * { transition: none !important; animation: none !important; }
+}
