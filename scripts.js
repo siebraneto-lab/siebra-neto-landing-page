@@ -126,10 +126,14 @@ function renderDiscografia(musicas) {
     const embed = (m) => `https://open.spotify.com/embed/${m.tipo === 'track' ? 'track' : 'album'}/${m.id}?utm_source=generator&theme=0`;
 
     alvo.innerHTML = `
-        <div class="flex items-center justify-between mb-4">
-            <div>
-                <p class="font-ubuntu text-xl font-bold text-white">Siebra Neto</p>
-                <p class="font-inter text-xs text-gray-400">Discografia · ${ordenadas.length} ${ordenadas.length === 1 ? 'lançamento' : 'lançamentos'}</p>
+        <div class="flex items-center justify-between gap-3 mb-4">
+            <div class="flex items-center gap-4 min-w-0">
+                <img src="https://i.scdn.co/image/ab6761610000e5eb9adf4dc7d4479dc6154c655f" alt="Siebra Neto"
+                     class="w-16 h-16 rounded-xl object-cover flex-shrink-0" style="border:1px solid rgba(176,38,255,0.5); box-shadow:0 0 18px rgba(176,38,255,0.35);">
+                <div class="min-w-0">
+                    <p class="font-ubuntu text-xl font-bold text-white">Siebra Neto</p>
+                    <p class="font-inter text-xs text-gray-400">Discografia · ${ordenadas.length} ${ordenadas.length === 1 ? 'lançamento' : 'lançamentos'}</p>
+                </div>
             </div>
             <a href="https://open.spotify.com/artist/0bKK5d0pmO8aLjYmGjXeAn" target="_blank" rel="noopener noreferrer"
                class="px-4 py-2 rounded-full border border-[#1DB954]/60 text-[#1DB954] font-inter text-xs font-semibold hover:bg-[#1DB954] hover:text-black transition-colors">
