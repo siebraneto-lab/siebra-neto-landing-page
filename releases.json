@@ -1,16 +1,28 @@
 {
   "artista_id": "0bKK5d0pmO8aLjYmGjXeAn",
-  "total": 1,
+  "total": 2,
   "lancamentos": [
+    {
+      "id": "3CGNMN1yO1BfiqUo5Ly4so",
+      "tipo": "track",
+      "titulo": "Cântico da criação",
+      "data_lancamento": "2026-10-04",
+      "compositor": "Siebra Neto",
+      "genero": "MPB / Rock / Reggae",
+      "capa_url": "https://i.scdn.co/image/ab67616d0000b273cb98e14768f5f95db39da650",
+      "url_spotify": "https://open.spotify.com/album/6W8VTKysFFbg5ivoYbQZ2e",
+      "faixas": 1
+    },
     {
       "id": "2Xr8ox7FHyXuF4gMVN1oPG",
       "tipo": "track",
       "titulo": "Sem luva de seda",
-      "data_lancamento": null,
+      "data_lancamento": "2026-06-22",
       "compositor": "Siebra Neto",
       "genero": "MPB / Rock / Reggae",
-      "capa_url": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bc825533d7f26c049d8e2801",
-      "url_spotify": "https://open.spotify.com/track/2Xr8ox7FHyXuF4gMVN1oPG"
+      "capa_url": "https://i.scdn.co/image/ab67616d0000b273bc825533d7f26c049d8e2801",
+      "url_spotify": "https://open.spotify.com/album/6uWoJxbcoL4AdJtcRu7ZSA",
+      "faixas": 1
     }
   ]
 }
