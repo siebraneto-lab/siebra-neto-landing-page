@@ -71,14 +71,28 @@ function initSwiper() {
     if (cont && !cont.querySelector('.autoplay-progress')) {
         cont.insertAdjacentHTML('beforeend', '<div class="autoplay-progress"><span></span></div>');
     }
-    const total = document.querySelectorAll('.lancamentos-swiper .swiper-slide').length;
+    // Loop contínuo para a esquerda precisa de slides suficientes: com poucas músicas,
+    // repete a lista (só visualmente) até ter pelo menos 6 slides.
+    const wrapper = document.querySelector('.lancamentos-swiper .swiper-wrapper');
+    const originais = Array.from(wrapper.children).filter(el => !el.dataset.clone);
+    let duplicou = false;
+    if (originais.length >= 2) {
+        while (wrapper.children.length < 6) {
+            originais.forEach(el => {
+                const c = el.cloneNode(true);
+                c.dataset.clone = '1';
+                wrapper.appendChild(c);
+            });
+            duplicou = true;
+        }
+    }
+    const total = wrapper.children.length;
     lancamentosSwiper = new Swiper('.lancamentos-swiper', {
         slidesPerView: 1,
         spaceBetween: 30,
-        centeredSlides: false,
-        // Com 3+ slides usa loop infinito; com 1-2 usa "rewind" (volta ao primeiro), mais estável.
-        loop: total >= 3,
-        rewind: total >= 2 && total < 3,
+        centeredSlides: true,
+        // Loop infinito: ao fim da lista continua deslizando para a esquerda e recomeça da mais recente.
+        loop: total >= 2,
         grabCursor: true,
         effect: 'slide',
         direction: 'horizontal',
@@ -93,7 +107,7 @@ function initSwiper() {
                 if (barra) barra.style.width = ((1 - progress) * 100) + '%';
             }
         },
-        pagination: { el: '.swiper-pagination', clickable: true },
+        pagination: { el: '.swiper-pagination', clickable: true, enabled: !duplicou },
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         breakpoints: { 768: { slidesPerView: 1.3, spaceBetween: 40 } }
     });
