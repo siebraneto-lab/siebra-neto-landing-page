@@ -75,13 +75,14 @@ function initSwiper() {
     lancamentosSwiper = new Swiper('.lancamentos-swiper', {
         slidesPerView: 1,
         spaceBetween: 30,
-        centeredSlides: true,
+        centeredSlides: false,
         // Com 3+ slides usa loop infinito; com 1-2 usa "rewind" (volta ao primeiro), mais estável.
         loop: total >= 3,
         rewind: total >= 2 && total < 3,
         grabCursor: true,
-        effect: 'coverflow',
-        coverflowEffect: { rotate: 5, stretch: 0, depth: 100, modifier: 1, slideShadows: false },
+        effect: 'slide',
+        direction: 'horizontal',
+        easing: 'ease-out',
         // Transição longa e suave (1,4s). O delay é contado DEPOIS da transição,
         // então 3,6s + 1,4s = ciclo total de 5s por slide.
         speed: 1400,
