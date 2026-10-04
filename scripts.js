@@ -67,6 +67,10 @@ function renderizarSlides(musicas) {
 
 function initSwiper() {
     if (lancamentosSwiper) lancamentosSwiper.destroy(true, true);
+    const cont = document.querySelector('.lancamentos-swiper');
+    if (cont && !cont.querySelector('.autoplay-progress')) {
+        cont.insertAdjacentHTML('beforeend', '<div class="autoplay-progress"><span></span></div>');
+    }
     const total = document.querySelectorAll('.lancamentos-swiper .swiper-slide').length;
     lancamentosSwiper = new Swiper('.lancamentos-swiper', {
         slidesPerView: 1,
@@ -78,8 +82,16 @@ function initSwiper() {
         grabCursor: true,
         effect: 'coverflow',
         coverflowEffect: { rotate: 5, stretch: 0, depth: 100, modifier: 1, slideShadows: false },
-        // Troca automática a cada 5s: do mais recente ao mais antigo, e recomeça.
-        autoplay: total >= 2 ? { delay: 5000, disableOnInteraction: false } : false,
+        // Transição longa e suave (1,4s). O delay é contado DEPOIS da transição,
+        // então 3,6s + 1,4s = ciclo total de 5s por slide.
+        speed: 1400,
+        autoplay: total >= 2 ? { delay: 3600, disableOnInteraction: false, pauseOnMouseEnter: true } : false,
+        on: {
+            autoplayTimeLeft(_s, _t, progress) {
+                const barra = document.querySelector('.autoplay-progress span');
+                if (barra) barra.style.width = ((1 - progress) * 100) + '%';
+            }
+        },
         pagination: { el: '.swiper-pagination', clickable: true },
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         breakpoints: { 768: { slidesPerView: 1.3, spaceBetween: 40 } }
