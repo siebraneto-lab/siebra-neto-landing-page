@@ -81,6 +81,53 @@ function initSwiper() {
     });
 }
 
+
+// =============================================================================
+// DISCOGRAFIA AUTOMÁTICA (substitui o player "Top tracks" do Spotify)
+// Lista todos os lançamentos do releases.json, MAIS NOVO PRIMEIRO.
+// =============================================================================
+function renderDiscografia(musicas) {
+    const alvo = document.querySelector('.spotify-embed');
+    if (!alvo) return;
+    const ordenadas = [...musicas].sort((a, b) => new Date(b.data_lancamento || 0) - new Date(a.data_lancamento || 0));
+    const fmt = (d) => d ? new Date(d + 'T12:00:00').toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }) : '';
+    const embed = (m) => `https://open.spotify.com/embed/${m.tipo === 'track' ? 'track' : 'album'}/${m.id}?utm_source=generator&theme=0`;
+
+    alvo.innerHTML = `
+        <div class="flex items-center justify-between mb-4">
+            <div>
+                <p class="font-ubuntu text-xl font-bold text-white">Siebra Neto</p>
+                <p class="font-inter text-xs text-gray-400">Discografia · ${ordenadas.length} ${ordenadas.length === 1 ? 'lançamento' : 'lançamentos'}</p>
+            </div>
+            <a href="https://open.spotify.com/artist/0bKK5d0pmO8aLjYmGjXeAn" target="_blank" rel="noopener noreferrer"
+               class="px-4 py-2 rounded-full border border-[#1DB954]/60 text-[#1DB954] font-inter text-xs font-semibold hover:bg-[#1DB954] hover:text-black transition-colors">
+                <i class="fab fa-spotify mr-1"></i>Seguir no Spotify
+            </a>
+        </div>
+        <iframe id="disco-player" style="border-radius:12px" src="${ordenadas.length ? embed(ordenadas[0]) : ''}" width="100%" height="152"
+            frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <ul id="disco-lista" class="mt-4 space-y-2 overflow-y-auto pr-1" style="max-height:230px;">
+            ${ordenadas.map((m, i) => `
+                <li class="disco-item flex items-center gap-3 p-2 rounded-xl cursor-pointer border ${i === 0 ? 'border-neon-pink/60 bg-white/5' : 'border-white/5 hover:border-neon-purple/50 hover:bg-white/5'} transition-all" data-embed="${embed(m)}">
+                    <span class="w-5 text-center font-inter text-xs text-gray-500">${i + 1}</span>
+                    <div class="w-11 h-11 rounded-lg bg-cover bg-center flex-shrink-0 bg-white/10" ${m.capa_url ? `style="background-image:url(${m.capa_url})"` : ''}></div>
+                    <div class="min-w-0 flex-1">
+                        <p class="font-inter text-sm font-semibold text-white truncate">${m.titulo}</p>
+                        <p class="font-inter text-xs text-gray-500">${fmt(m.data_lancamento)}${i === 0 ? ' · <span class="text-neon-pink">mais recente</span>' : ''}</p>
+                    </div>
+                    <i class="fas fa-play text-xs text-gray-400"></i>
+                </li>`).join('')}
+        </ul>`;
+
+    alvo.querySelectorAll('.disco-item').forEach((li) => {
+        li.addEventListener('click', () => {
+            document.getElementById('disco-player').src = li.dataset.embed;
+            alvo.querySelectorAll('.disco-item').forEach((x) => { x.classList.remove('border-neon-pink/60', 'bg-white/5'); x.classList.add('border-white/5'); });
+            li.classList.remove('border-white/5'); li.classList.add('border-neon-pink/60', 'bg-white/5');
+        });
+    });
+}
+
 async function carregarLancamentos() {
     const RESERVA = [{ id: '2Xr8ox7FHyXuF4gMVN1oPG', tipo: 'track', titulo: 'Sem luva de seda', compositor: 'Siebra Neto', genero: 'MPB / Rock / Reggae', data_lancamento: null, capa_url: null }];
     try {
@@ -100,6 +147,7 @@ async function carregarLancamentos() {
         console.warn('Usando lista de reserva:', e);
         musicasSpotify = RESERVA;
     }
+    renderDiscografia(musicasSpotify);
     renderizarSlides(musicasSpotify);
 }
 
