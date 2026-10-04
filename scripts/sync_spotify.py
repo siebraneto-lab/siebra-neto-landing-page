@@ -19,7 +19,7 @@ def main():
                data=urllib.parse.urlencode({"grant_type": "client_credentials"}).encode(),
                headers={"Authorization": f"Basic {auth}", "Content-Type": "application/x-www-form-urlencoded"})["access_token"]
     H = {"Authorization": f"Bearer {tok}"}
-    items, url = [], f"https://api.spotify.com/v1/artists/{ARTIST_ID}/albums?include_groups=single,album,appears_on&market=BR&limit=50"
+    items, url = [], f"https://api.spotify.com/v1/artists/{ARTIST_ID}/albums?include_groups=single,album,appears_on&market=BR&limit=10"
     while url:
         d = http(url, headers=H); items += d["items"]; url = d.get("next")
     vistos, saida = set(), []
