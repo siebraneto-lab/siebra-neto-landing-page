@@ -1,7 +1,18 @@
 {
   "artista_id": "0bKK5d0pmO8aLjYmGjXeAn",
-  "total": 2,
+  "total": 3,
   "lancamentos": [
+    {
+      "id": "17zs0GkgnAbZ70irdvHwiS",
+      "tipo": "track",
+      "titulo": "Seu amor na minha vida",
+      "data_lancamento": "2026-10-07",
+      "compositor": "Siebra Neto",
+      "genero": "MPB / Rock / Reggae",
+      "capa_url": "https://i.scdn.co/image/ab67616d0000b273eaaaad5783b8300356c84e2b",
+      "url_spotify": "https://open.spotify.com/album/7tjg8rLYlBsHZDzpCwHf4E",
+      "faixas": 1
+    },
     {
       "id": "3CGNMN1yO1BfiqUo5Ly4so",
       "tipo": "track",
